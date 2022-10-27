@@ -56,7 +56,7 @@ export function Categories({ categories }: { categories: CategoryTypes[] }): JSX
               css({
                 display: 'flex',
                 gap: '1em',
-                justifyContent: 'space-between',
+                justifyContent: 'space-around',
                 transition: '200ms',
               }),
               scrolled ? css({ transform: `scale(0.95)` }) : null,

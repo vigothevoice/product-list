@@ -12,57 +12,184 @@ const formatter = new Intl.NumberFormat(intlNumberFormatValues[0], {
   currency: intlNumberFormatValues[2],
 })
 
+const mockData = [
+  {
+    name: 'Möbel',
+    articleCount: 78000,
+    childrenCategories: [
+      {
+        name: 'Wohnzimmer',
+        urlPath: 'kategorie/wohnzimmermoebel/',
+      },
+      {
+        name: 'Schlafzimmer',
+        urlPath: 'kategorie/schlafzimmermoebel/',
+      },
+    ],
+    categoryArticles: {
+      articles: [
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Premium Komfortmatratze Smood',
+          variantName: '180 x 200cm',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 54999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/m/a/matratzenbezug-smood-webstoff-180-x-200cm-3477221.webp',
+            },
+          ],
+        },
+        {
+          name: 'Schuhkommode Lindholm II',
+          variantName: 'Weiß',
+          prices: {
+            currency: 'EUR',
+            regular: {
+              value: 44999,
+            },
+          },
+          images: [
+            {
+              path: 'https://cdn1.home24.net/images/media/catalog/product/200x200/png/-/1/-1000008078-190401-10061600008-IMAGE-P000000001000008078.webp',
+            },
+          ],
+        },
+      ],
+    },
+  },
+]
+
+
 export function ProductsList() {
-  const [categories, setCategories] = React.useState<CategoryTypes[]>()
+  const [categories, setCategories] = React.useState<CategoryTypes[]>(mockData)
 
-  React.useEffect(() => {
-    const xhr = new XMLHttpRequest()
+  // React.useEffect(() => {
+  //   const xhr = new XMLHttpRequest()
 
-    xhr.open('POST', '/graphql')
-    xhr.setRequestHeader('Content-Type', 'application/json')
+  //   xhr.open('POST', '/graphql')
+  //   xhr.setRequestHeader('Content-Type', 'application/json')
 
-    xhr.send(
-      JSON.stringify({
-        query: `{
-        categories(ids: "156126", locale: de_DE) {
-          name
-          articleCount
-          childrenCategories {
-            name
-            urlPath
-          }
-          categoryArticles(first: 50) {
-            articles {
-              name
-              variantName
-              prices {
-                currency
-                regular {
-                  value
-                }
-              }
-              images(
-                format: WEBP
-                maxWidth: 200
-                maxHeight: 200
-                limit: 1
-              ) {
-                path
-              }
-            }
-          }
-        }
-      }`,
-      }),
-    )
+  //   xhr.send(
+  //     JSON.stringify({
+  //       query: `{
+  //       categories(ids: "156126", locale: de_DE) {
+  //         name
+  //         articleCount
+  //         childrenCategories {
+  //           name
+  //           urlPath
+  //         }
+  //         categoryArticles(first: 50) {
+  //           articles {
+  //             name
+  //             variantName
+  //             prices {
+  //               currency
+  //               regular {
+  //                 value
+  //               }
+  //             }
+  //             images(
+  //               format: WEBP
+  //               maxWidth: 200
+  //               maxHeight: 200
+  //               limit: 1
+  //             ) {
+  //               path
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }`,
+  //     }),
+  //   )
 
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const response = JSON.parse(xhr.response)
-        setCategories(response.data.categories)
-      }
-    }
-  }, [])
+  //   xhr.onload = () => {
+  //     if (xhr.status === 200) {
+  //       const response = JSON.parse(xhr.response)
+  //       setCategories(response.data.categories)
+  //     }
+  //   }
+  // }, [])
 
   return (
     <React.Fragment>

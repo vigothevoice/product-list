@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import LogoSVG from 'assets/logo.svg'
 
 export function Header({ search }: any): JSX.Element {
   return (
@@ -18,7 +17,7 @@ export function Header({ search }: any): JSX.Element {
       }}
     >
       <a href="/">
-        <img src={LogoSVG} alt="logo" css={{ width: '5rem' }} />
+        Logo
       </a>
       {search}
     </header>
